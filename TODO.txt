@@ -1,0 +1,17 @@
+O que o projeto pode fazer:
+
+- ok Expor uma tela inicial com posts das pessoas do bairro - ok
+- Criar o cadastro de um usuário - ok (receber token)
+- O usuário conseguir criar post 
+- Usuário conseguir editar o post
+- Usuário conseguir excluir o post
+
+
+
+Com que frequencia você vai precisar realizar esta ação? 
+O formato da tabela é apenas um? 
+Como os dados são inseridos? 
+Mais pessoas vão precisar de acesso?
+Qual o objetivo desta função? 
+Precisa ser acessivel de qualquer lugar? 
+
