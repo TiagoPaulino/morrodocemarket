@@ -9,9 +9,9 @@ export function generateToken(payload: string) {
 
 export async function verifyToken(token: string) {
   try {
-    const payload = jwt.verify(token, JWT_SECRET, {maxAge: '1h'});
+    const payload = await jwt.verify(token, JWT_SECRET, {maxAge: '1h'});
     return payload;
   } catch (error) {
-    throw new Error("Invalid token");
+    return null;
   }
 }

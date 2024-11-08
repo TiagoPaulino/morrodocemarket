@@ -1,14 +1,14 @@
 import clientPromise from "@/lib/mongodb/mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
+import PostContollerMongoDb  from "@/lib/mongodb/controllers/PostController";
+import PostController from "@/core/usecases/postController";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const client = await clientPromise;
-        const db = client.db('morrodocemarketdb'); // Substitua pelo seu nome de banco de dados
-
+        const postController = new PostController(new PostContollerMongoDb());
         if (req.method === 'GET') {
-            const posts = await db.collection('posts').find({}).toArray();
+            const posts = await postController.getPosts();
             res.status(200).json(posts);
         } else {
             res.setHeader('Allow', ['GET']);

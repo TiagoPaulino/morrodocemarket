@@ -1,12 +1,13 @@
 
 
-import { Post } from "@/core/interfaces";
+import Post from "@/core/entity/post";
 import clientPromise from "../../mongodb";
 import {v4 as uuid} from 'uuid'
 
+const client = await clientPromise;
+const db = client.db('morrodocemarketdb');
+
 export async function getPosts() {
-    const client = await clientPromise;
-    const db = client.db('morrodocemarketdb'); 
     try{
         const posts = await db.collection('posts').find({}).toArray();
         return posts;
@@ -17,8 +18,6 @@ export async function getPosts() {
 } 
 
 export async function getPostById(id: string) {
-    const client = await clientPromise;
-    const db = client.db('morrodocemarketdb'); 
     try{
         const post = await db.collection('posts').findOne({ id });
         return post;
@@ -28,8 +27,6 @@ export async function getPostById(id: string) {
     }
 }
 export async function createPost(post: Post) {
-    const client = await clientPromise;
-    const db = client.db('morrodocemarketdb'); 
     try{
         post.id = uuid();
         post.date = new Date().toISOString();
